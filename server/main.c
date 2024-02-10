@@ -23,7 +23,7 @@ int main( int argc, char* argv[] ) {
   // Create data folder if needed
   char* fname = "homedb_data";
   if ( isFile( fname ) ) {
-    printf( "Data directory was already exists\n" );
+    printf( "Data directory was already existing\n" );
   } else { 
     int status = mkdir( fname, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH );
     if ( status == 0 ) {
@@ -54,11 +54,16 @@ int main( int argc, char* argv[] ) {
       // process & execute query
 
       // Fake query execution
-      temp_record myTemp;
-      time( &myTemp.timestamp );
-      myTemp.value = 5.5;
+      char dataToStore[] = "This is the data to store.";
+      int testInt = 10;
+      rawData myData;
+      myData = createRawData( &testInt, sizeof( testInt ) );
+      
+      if ( myData.data == 0 ) {
+        return -1;
+      }
 
-      storeTemp( &myTemp );
+      storeData( &myData );
     }
   }
 

@@ -3,9 +3,8 @@
 
 #include "../data/data.h"
 
-int storeTemp( temp_record *record );
+int storeData( rawData *data );
 
-
-
+rawData createRawData( void* data, size_t size );
 
 #endif // HOMEDB_STORE_H
